@@ -1,0 +1,6 @@
+[submodule "src/submodules/base_layout"]
+	path = src/submodules/base_layout
+	url = https://github.com/craftycram/rc-interface-component
+[submodule "src/submodules/queue"]
+	path = src/submodules/queue
+	url = https://github.com/tomschmosby/queue
