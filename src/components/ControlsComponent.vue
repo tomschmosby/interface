@@ -3,9 +3,10 @@
         <strong>Connected: {{connected}}</strong><br><br><br>
         <div class="half">
             <h4>Presets</h4>
-            <button v-on:click="lichtAnschalten()" :disabled="!connected || !amIActive">Licht An</button>
-            <button v-on:click="lichtAusschalten()" :disabled="!connected || !amIActive">Licht Aus</button>
-            <button v-on:click="buttonClick(3)" :disabled="!connected || !amIActive">Position 3</button><br>
+            <button v-on:click="lichtR()" :disabled="!connected || !amIActive">Rot</button>
+            <button v-on:click="lichtG()" :disabled="!connected || !amIActive">Grün</button>
+            <button v-on:click="lichtB()" :disabled="!connected || !amIActive">Blau</button>
+            <button v-on:click="buttonClick(3)" :disabled="!connected || !amIActive">Aus</button><br>
         </div>
         <div class="half">
             <h4>Current Waiting Queue {{this.currentTimer}}</h4>
@@ -15,7 +16,7 @@
 </template>
 
 <script>
-    import SimpleQueue from "./SimpleQueueComponent"
+   import SimpleQueue from "./SimpleQueueComponent"
 
     export default {
         components: {
@@ -24,14 +25,17 @@
         methods: {
             //CHANGEME: die Namen der Nachrichten die ihr mit emit() verschickt müssen mit dem Backend matchen
             buttonClick: function (preset) {
-                console.log("Click button " + preset);
+                console.log("Click button" + preset);
                 this.$socket.emit('preset', preset);
             },
-            lichtAnschalten: function () {
-                this.$socket.emit('lightOn');
+            lichtR: function () {
+                this.$socket.emit('rotAn');
             },
-            lichtAusschalten: function () {
-                this.$socket.emit('lightOff');
+            lichtG: function () {
+                this.$socket.emit('gruenAn');
+            },
+            lichtB: function () {
+                this.$socket.emit('blauAn');
             }
         },
         sockets: {
