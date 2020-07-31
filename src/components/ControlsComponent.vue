@@ -3,10 +3,10 @@
         <strong>Connected: {{connected}}</strong><br><br><br>
         <div class="half">
             <h4>Presets</h4>
-            <button v-on:click="lichtR()" :disabled="!connected || !amIActive">Rot</button>
-            <button v-on:click="lichtG()" :disabled="!connected || !amIActive">Grün</button>
-            <button v-on:click="lichtB()" :disabled="!connected || !amIActive">Blau</button>
-            <button v-on:click="buttonClick(3)" :disabled="!connected || !amIActive">Aus</button><br>
+            <button v-on:click="lichtR()" :disabled="!connected ||  !$storeamIActive">Rot</button>
+            <button v-on:click="lichtG()" :disabled="!connected ||  !$storeamIActive">Grün</button>
+            <button v-on:click="lichtB()" :disabled="!connected ||  !$storeamIActive">Blau</button>
+            <button v-on:click="buttonClick(3)" :disabled="!connected || !$storeamIActive">Aus</button><br>
         </div>
         <div class="half">
             <h4>Current Waiting Queue {{this.currentTimer}}</h4>
@@ -42,7 +42,7 @@
             connect: function () {
                 console.log('socket connected')
                 this.connected = true;
-                this.ownId = this.$socket.id
+                this.$store.state.ownId = this.$socket.id;
                 this.$socket.emit("register_front")
             },
             disconnect: function () {
