@@ -7,6 +7,7 @@
             <button v-on:click="lichtG()" :disabled="!connected ||  !$storeamIActive">Grün</button>
             <button v-on:click="lichtB()" :disabled="!connected ||  !$storeamIActive">Blau</button>
             <button v-on:click="buttonClick(3)" :disabled="!connected || !$storeamIActive">Aus</button><br>
+            <span class="dot"></span>
         </div>
         <div class="half">
             <h4>Current Waiting Queue {{this.currentTimer}}</h4>
@@ -64,7 +65,11 @@
             },
             client_name: function(data) {
                 this.clientName = data;
-            }
+            },
+            farbe: (data) => {
+                 this.farbe = data;
+
+            },
         },
         data: function () {
             return {
@@ -81,6 +86,7 @@
                 return this.currentQueue[1][0].id === this.ownId;
             }
         }
+        
     }
 </script>
 
@@ -91,4 +97,5 @@
         width: 50%;
         vertical-align: top;
     }
+
 </style>
