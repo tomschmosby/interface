@@ -3,10 +3,10 @@
         <strong>Connected: {{connected}}</strong><br><br><br>
         <div class="half">
             <h4>Presets</h4>
-            <button v-on:click="lichtR()" :disabled="!connected ||  !$storeamIActive">Rot</button>
-            <button v-on:click="lichtG()" :disabled="!connected ||  !$storeamIActive">Grün</button>
-            <button v-on:click="lichtB()" :disabled="!connected ||  !$storeamIActive">Blau</button>
-            <button v-on:click="buttonClick(3)" :disabled="!connected || !$storeamIActive">Aus</button><br>
+            <button v-on:click="lichtR()" :disabled="!connected ">Rot</button>
+            <button v-on:click="lichtG()" :disabled="!connected ">Grün</button>
+            <button v-on:click="lichtB()" :disabled="!connected ">Blau</button>
+            <button v-on:click="buttonClick(3)" :disabled="!connected ">Aus</button><br>
             <span class="dot"></span>
         </div>
         <div class="half">
