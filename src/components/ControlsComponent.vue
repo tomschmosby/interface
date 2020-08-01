@@ -6,7 +6,7 @@
             <button v-on:click="lichtR()" :disabled="!connected ">Rot</button>
             <button v-on:click="lichtG()" :disabled="!connected ">Grün</button>
             <button v-on:click="lichtB()" :disabled="!connected ">Blau</button>
-            <button v-on:click="buttonClick(3)" :disabled="!connected ">Aus</button><br>
+            <button v-on:click="lichtA()" :disabled="!connected ">Aus</button><br>
             <span class="dot"></span>
         </div>
         <div class="half">
@@ -25,9 +25,9 @@
         },
         methods: {
             //CHANGEME: die Namen der Nachrichten die ihr mit emit() verschickt müssen mit dem Backend matchen
-            buttonClick: function (preset) {
-                console.log("Click button" + preset);
-                this.$socket.emit('preset', preset);
+            lichtA: function () {
+                //console.log("lichta");
+                this.$socket.emit('lichtA');
             },
             lichtR: function () {
                 this.$socket.emit('rotAn');
