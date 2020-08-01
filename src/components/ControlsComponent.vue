@@ -6,8 +6,9 @@
             <button v-on:click="lichtR()" :disabled="!connected ">Rot</button>
             <button v-on:click="lichtG()" :disabled="!connected ">Grün</button>
             <button v-on:click="lichtB()" :disabled="!connected ">Blau</button>
-            <button v-on:click="lichtA()" :disabled="!connected ">Aus</button><br>
-            <span class="dot"></span>
+            <button v-on:click="lichtA()" :disabled="!connected ">Aus</button>
+            <div id= "rect" v-bind:style="{ color: farbe }"></div>
+            <button id = "rect" v-bind:style="{ backgroundColor: farbe }"></button>
         </div>
         <div class="half">
             <h4>Current Waiting Queue {{this.currentTimer}}</h4>
@@ -66,11 +67,15 @@
             client_name: function(data) {
                 this.clientName = data;
             },
-            farbe: (data) => {
+            farbwert: function(data) {
+                console.log(data);
                  this.farbe = data;
-
+            
             },
         },
+
+          
+     
         data: function () {
             return {
                 connected: false,
@@ -78,6 +83,8 @@
                 ownId: "undefined",
                 clientName: "undefined",
                 currentTimer: 0,
+                farbe: '#000000',
+
             }
         },
         computed: {
@@ -97,5 +104,17 @@
         width: 50%;
         vertical-align: top;
     }
+
+    #rect {
+        border: black;
+        background-color: #000000;
+        display: inline-block;
+        max-width: 50%;
+        width: 50%;
+        height: 30px;
+        vertical-align: top;
+    }
+
+
 
 </style>
